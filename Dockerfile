@@ -1,11 +1,13 @@
 FROM ubuntu:14.10
 MAINTAINER gromez "jerome.groven@gmail.com"
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update
 RUN apt-get upgrade -y
 
-RUN apt-get install -y python-software-properties
-RUN add-apt-repository ppa:webupd8team/java -y
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:webupd8team/java
 
 RUN apt-get update
 RUN echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
